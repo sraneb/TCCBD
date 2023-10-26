@@ -1,88 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Formulário</title>
+    <title>Formulário de Cadastro</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        form {
+            background: #fff;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px #ccc;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-    <div class="container">
-        <div class="form-image">
-        <img src="euu.avif" alt="euu.avif">
-        </div>
-        <div class="form">
-            <form action="#">
-                <div class="form-header">
-                    <div class="title">
-                        <h1>Cadastre-se</h1>
-                    </div>
-                    <div class="login-button">
-                        <button><a href="index.php">Entrar</a></button>
-                    </div>
-                </div>
+    <form action="cadastro.php" method="POST">
+        <h1>Cadastro</h1>
 
-                <div class="input-group">
-                    <div class="input-box">
-                        <label for="firstname">Primeiro Nome</label>
-                        <input id="firstname" type="text" name="firstname" placeholder="Digite seu primeiro nome" required>
-                    </div>
+        <label for="nome">Nome:</label>
+        <input type="text" id="nome" name="nome" required>
 
-                    
-                    <div class="input-box">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" placeholder="Digite seu e-mail" required>
-                    </div>
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" required>
 
-                
+        <label for="senha">Senha:</label>
+        <input type="password" id="senha" name="senha" required>
 
-                    <div class="input-box">
-                        <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
-                    </div>
+        <label for="genero">genero:</label>
+        <input type="text" id="genero" name="genero" required>
+        
 
-
-                    <div class="input-box">
-                        <label for="confirmPassword">Confirme sua Senha</label>
-                        <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Digite sua senha novamente" required>
-                    </div>
-
-                </div>
-
-                <div class="gender-inputs">
-                    <div class="gender-title">
-                        <h6>Gênero</h6>
-                    </div>
-
-                    <div class="gender-group">
-                        <div class="gender-input">
-                            <input id="female" type="radio" name="gender">
-                            <label for="female">Feminino</label>
-                        </div>
-
-                        <div class="gender-input">
-                            <input id="male" type="radio" name="gender">
-                            <label for="male">Masculino</label>
-                        </div>
-
-
-
-                        <div class="gender-input">
-                            <input id="none" type="radio" name="gender">
-                            <label for="none">Prefiro não dizer</label>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="continue-button">
-                    <button><a href="#">Continuar</a> </button>
-                </div>
-            </form>
-        </div>
-    </div>
+        <button type="submit">Cadastrar</button>
+    </form>
 </body>
-
 </html>

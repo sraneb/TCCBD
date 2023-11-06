@@ -1,31 +1,86 @@
+<?php
+include("conexao.php");
+include("cadastro.php");
+if (isset($_POST['email']) == 0){
+  
+  if(strlen($_POST['email']) == 0 ){
+    echo "preencha seu email";
+  } else if(strlen($_POST['senha']) == 0){
+    echo "preencha sua senha";
+  } else {
+
+      $email = $mysqli-> real_escaoe_string($_POST['email']);
+      $senha = $mysqli-> real_escaoe_string($_POST['seha']);
+
+      $sql_code = "SELECT *FROM usuarios WHERE email='$email' AND senha ='$senha'";
+      $sql_query = $mysqli->query($sql_code) or die ("Falha na execução do código SQL:". $mysqli->error):
+
+      $quantidade = $sql_query->num_rows;
+
+      if($quantidade == 1) {
+
+      $usuario =$sql_query->fetch_assoc();
+
+      if (! isset($_SESSION)){
+          session_start();
+      }    
+
+      $_SESSION['id'] = $usuario['id'];
+      $_SESSION['nome'] = $usuario['nome'];
+
+      heander("location: inicio.php");
+   
+   } else{
+        echo "falha ao logar! email ou senha incorretos ";  
+   }
+
+
+
+
+
+
+?>
+
+
+
+
+
+
+
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
-	<meta charset="UTF-8">
-	<title>Sistema de Login</title>
-	<!-- Layout com bootstrap -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="login.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
 </head>
 <body>
-	<div class="container">
-		<div class="row" style="margin-top: 200px;">
-			<div class="col-lg-4 offset-lg-4 jumbotron">
-				<form action="login.php" method="POST">
-					<div class="form-group">
-						<label>Usuário</label>
-						<input type="text" name="usuario" class="form-control">
-					</div>
-					<div class="form-group">
-						<label>Senha</label>
-						<input type="password" name="senha" class="form-control">
-					</div>
-					<div class="form-group">
-						<button type="submit" class="btn btn-success">Enviar</button>
-                        <button type="submit" class="btn btn-success">crie sua conta!</button>
-					</div>
-				</form>
-			</div>
-		</div>
-	</div>
+  <div class="main-login">
+<div class="left-login"></div>
+<h1 class="Tlt1">Faça login <br>Para uma vida mais saúdavel!</h1>
+<img src="mbd.png" class="mbd-image" alt="mbd">
+
+
+<div class="right-login"></div>
+<div class="card-login">
+  <h1>LOGIN</h1>
+<div class="textfield">
+<label for="usuario">Usuário:</label>
+<input type="text" name="usuario" placeholder="Nome">
+</div>
+<div class="textfield">
+  <label for="senha">Senha:</label>
+  <input type="password" name="usuario" placeholder="Digite sua senha aqui...">
+  </div>
+  <button class="botao-login">login</button>
+  <a href='registro.php'><button class="botao-login">crie sua conta</button></a>
+
+
+</div>
+
+
+  </div>
 </body>
 </html>

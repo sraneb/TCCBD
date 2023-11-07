@@ -1,23 +1,20 @@
 <?php
-    include("conexao.php")
+include("conexao.php"); // Adiciona o ponto e vírgula no final
 
-    $id=$_POST['id'];
-    $nome=$_POST['nome'];
-    $email=$_POST['email'];
-    $senha=$_POST['senha'];
-    $nascimento=$_POST['nascimento'];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
+$senha = $_POST['senha'];
+$genero = $_POST['genero'];
 
+// Suponho que você tenha uma coluna 'id' na sua tabela com autoincrement, portanto, não é necessário especificar o valor de 'id' na inserção.
 
-    $slq="INSERT INTO usuarios(id, nome, email, senha, nascimento) 
-            VALUES ($id, '$nome', '$email', '$senha', '$nascimento')";
+$sql = "INSERT INTO usuario (nome, email, senha, genero) VALUES ('$nome', '$email', '$senha', '$genero')";
 
+if (mysqli_query($conexao, $sql)) { // Correção na sintaxe do if
+    echo "Usuário cadastrado com sucesso";
+} else {
+    echo "Erro: " . mysqli_connect_error($conexao); // Correção do nome da função
+}
 
-    if(mysqli_query($conexao, $slq){
-        echo "usuario cadastrado com sucesso";
-    })
-    else{
-        echo "error".mysqli_conect_error($conexao);
-    }
-
-    mysqli_close($conexao);
+mysqli_close($conexao);
 ?>

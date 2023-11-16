@@ -1,13 +1,12 @@
 <?php
-    $host= "localhost"; 
-    $usuario= "root";
-    $senha= "";
-    $banco= "TCC";
+    $host = "localhost";
+    $usuario = "root";
+    $senha = "";
+    $banco = "chega";
 
-    $conexao=mysqli_conenct("$host,$usuario,$senha,$banco");
-    if($conexao){
-    die("houve um erro".mysqli_error());
+    $mysqli= new mysqli($host, $usuario, $senha, $banco);
 
+    if($mysqli->error) {
+
+        die ("houve uma falha!" . $mysqli->error);
     }
-
-?>

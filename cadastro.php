@@ -1,5 +1,5 @@
 <?php
-include("conexao.php"); // Adiciona o ponto e vírgula no final
+include('./processos/conexao.php'); // Adiciona o ponto e vírgula no final
 
 $nome = $_POST['nome'];
 $email = $_POST['email'];
@@ -10,11 +10,11 @@ $genero = $_POST['genero'];
 
 $sql = "INSERT INTO usuario (nome, email, senha, genero) VALUES ('$nome', '$email', '$senha', '$genero')";
 
-if (mysqli_query($conexao, $sql)) { // Correção na sintaxe do if
+if (mysqli_query($mysqli, $sql)) { // Correção na sintaxe do if
     echo "Usuário cadastrado com sucesso";
 } else {
-    echo "Erro: " . mysqli_connect_error($conexao); // Correção do nome da função
+    echo "Erro: " . mysqli_connect_error($mysqli); // Correção do nome da função
 }
 
-mysqli_close($conexao);
+mysqli_close($mysqli);
 ?>

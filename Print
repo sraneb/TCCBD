@@ -1,1 +1,20 @@
 
+<?php
+include('./processos/conexao.php');
+
+$nome = mysqli_real_escape_string($mysqli, $_POST['nome']);
+$email = mysqli_real_escape_string($mysqli, $_POST['email']);
+$senha = password_hash($_POST['senha'], PASSWORD_DEFAULT); // Usando password_hash para proteger as senhas
+$genero = mysqli_real_escape_string($mysqli, $_POST['genero']);
+
+$sql = "INSERT INTO usuario (nome, email, senha, genero) VALUES ('$nome', '$email', '$senha', '$genero')";
+
+if (mysqli_query($mysqli, $sql)) {
+    echo "Usuário cadastrado com sucesso";
+} else {
+    echo "Erro no cadastro do usuário";
+    error_log("Erro ao cadastrar usuário: " . mysqli_error($mysqli)); // Log detalhado no servidor
+}
+
+mysqli_close($mysqli);
+?>
